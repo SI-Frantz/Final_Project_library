@@ -97,7 +97,7 @@ def sent2vec(sentence:str) -> list:
   
   # ANN Functions from Professor Steven Fickas: 
   
-  import warnings
+import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 #%tensorflow_version 2.x
 import tensorflow as tf
@@ -115,9 +115,9 @@ from matplotlib.pyplot import rcParams
 #%matplotlib inline
 rcParams['figure.figsize'] = 10,8
 
-# ANN functions 
-  
-  def ann_build_model(n:int, layer_list: list, seed=1234, metrics='binary_accuracy'):
+#####
+
+def ann_build_model(n:int, layer_list: list, seed=1234, metrics='binary_accuracy'):
   assert isinstance(n, int), f'n is an int, the number of columns/features of each sample. Instead got {type(n)}'
   assert isinstance(layer_list, list) or isinstance(layer_list, tuple), f'layer_list is a list or tuple, the number of nodes per layer. Instead got {type(layer_list)}'
 
@@ -199,3 +199,5 @@ def grid_search(layers_list, epochs_list, X_train, Y_train, indim=236):
   params = grid_result.cv_results_['params']
   for mean, stdev, param in zip(means, stds, params):
       print("%f (%f) with: %r" % (mean, stdev, param))
+
+
