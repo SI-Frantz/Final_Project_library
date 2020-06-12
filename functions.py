@@ -13,6 +13,21 @@ nlp = en_core_web_md.load()
 def hello():
   print("Hello there!")
   
+# data wrangling functions: 
+
+def get_attribute(possible_attributes, table):
+  new_list = []
+  attribute_list = ["NA"] # This is in case the set statement below does not find an overlap
+  for (index_label, row_series) in table.iterrows():
+    row_list = row_series.dropna().to_list()
+    attribute_list = list((set(row_list) & set(possible_attributes))) #find the overlap between the possible attributes and row_list - there should be just 1. 
+    #print(attribute_list)
+    if len(attribute_list) == 0:
+      attribute_list = ["NA"]
+    new_attr = attribute_list[0]
+    new_list.append(new_attr)
+  return new_list
+  
 
 # VECTOR FUNCTIONS: 
 
